@@ -1,11 +1,13 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import {getSortedPostsData} from "../lib/post"
-import Link from 'next/link'
-import Date from '../components/date'
+import Head from "next/head";
+import Layout, { siteTitle } from "../components/layout";
+import utilStyles from "../styles/utils.module.css";
+import { getSortedPostsData } from "../lib/post";
+import Link from "next/link";
+import Date from "../components/date";
+import Image from "next/image";
+import examplePic from "../public/images/example.png";
 
-export default function Home({allPostsData}) {
+export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
@@ -14,7 +16,7 @@ export default function Home({allPostsData}) {
       <section className={utilStyles.headingMd}>
         <p>[My Self Introduction]</p>
         <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
+          (This is a sample website - you’ll be building a site like this on{" "}
           <a href="https://www.nextjs.cn/learn">our Next.js tutorial</a>.)
         </p>
       </section>
@@ -34,15 +36,16 @@ export default function Home({allPostsData}) {
           ))}
         </ul>
       </section>
+      <Image src={examplePic} alt="Picture of example" />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+  const allPostsData = getSortedPostsData();
   return {
     props: {
-      allPostsData
-    }
-  }
+      allPostsData,
+    },
+  };
 }
